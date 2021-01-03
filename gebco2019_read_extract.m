@@ -14,8 +14,8 @@ elevation=ncread('GEBCO_2019.nc','elevation');
 
 %% extraction area definition by bounding box
 
-lonn=[27.511;27.642];
-latn=[37.186;37.300];
+lonn=[15.2;21.5];
+latn=[33.1;38.8];
 
 % finding nearest points
 lon_ind=dsearchn(lon,lonn);
