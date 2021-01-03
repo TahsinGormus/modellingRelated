@@ -6,22 +6,22 @@
 % % Please change your area of interest with lonn and latn varibles.
 % % Please also check whether the name of the file is true: GEBCO_2019.nc.
 
-%% data loading %%
+%% data loading
 
 lon=ncread('GEBCO_2019.nc','lon');
 lat=ncread('GEBCO_2019.nc','lat');
 elevation=ncread('GEBCO_2019.nc','elevation');
 
-%% extraction area definition by bounding box %%
+%% extraction area definition by bounding box
 
 lonn=[27.511;27.642];
 latn=[37.186;37.300];
 
-% finding nearest points %
+% finding nearest points
 lon_ind=dsearchn(lon,lonn);
 lat_ind=dsearchn(lat,latn);
 
-%% Extracting values %%
+%% Extracting values
 dem_extract=elevation(lon_ind(1):lon_ind(2),lat_ind(1):lat_ind(2));
 lon_extract=lon(lon_ind(1):lon_ind(2));
 lat_extract=lat(lat_ind(1):lat_ind(2));
@@ -38,7 +38,7 @@ for i=1:numel(lon_extract)
 end
 fclose(fileID);
 
-%% Plotting %%
+%% Plotting
 data=importdata("DEM_extracted.xyz");
 geoscatter(data(:,2),data(:,1),[],data(:,3),'filled')
 colorbar
